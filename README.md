@@ -2,13 +2,9 @@
 
 A simple web application that extracts text from PDF files and provides AI-powered analysis.
 
-## Demo Video
+## 📹 Demo Video
 
-Watch the complete walkthrough:
-
-[![PDF Extractor Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-
-*Replace `YOUR_VIDEO_ID` with your actual YouTube video ID*
+Watch the complete walkthrough: [YouTube Demo](https://youtu.be/oQ8NHAX8QYU)
 
 ## Quick Start Guide
 
