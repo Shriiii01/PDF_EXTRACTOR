@@ -68,30 +68,25 @@ async def process_pdf(
             raise HTTPException(status_code=400, detail="No text could be extracted from the PDF")
         
         # Prepare prompt for OpenAI
-        prompt = f"""Please analyze the following PDF text and provide information based on the procedure "{procedure}" and insurance payer "{insurance_payer}".
+        prompt = f"""Analyze this PDF text for procedure "{procedure}" and payer "{insurance_payer}".
 
-PDF Text:
-{extracted_text}
+Text: {extracted_text[:3000]}
 
-Please provide a clear, structured response with the following sections:
+Provide brief response:
 1. Summary
 2. Key Findings
-3. Recommendations
-
-Procedure: {procedure}
-Insurance Payer: {insurance_payer}
-"""
+3. Recommendations"""
         
         # Call OpenAI API
         client = get_openai_client()
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes medical documents and provides clear, structured responses."},
+                {"role": "system", "content": "Provide concise, structured analysis."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.7,
-            max_tokens=2000
+            temperature=0.5,
+            max_tokens=500
         )
         
         ai_response = response.choices[0].message.content
