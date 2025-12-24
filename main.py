@@ -8,8 +8,10 @@ import io
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables - explicitly load from current directory
+from pathlib import Path
+env_path = Path(__file__).parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
 app = FastAPI()
 
@@ -105,9 +107,25 @@ Insurance Payer: {insurance_payer}
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error processing request: {str(e)}")
+        import traceback
+        error_detail = str(e)
+        # Log full traceback for debugging (remove in production)
+        print(f"Error details: {error_detail}")
+        print(f"Traceback: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Error processing request: {error_detail}")
 
 
 @app.get("/")
 async def root():
     return RedirectResponse(url="/static/index.html")
+
+
+@app.get("/api/check-config")
+async def check_config():
+    """Debug endpoint to check if API key is loaded."""
+    api_key = os.getenv("OPENAI_API_KEY")
+    return JSONResponse(content={
+        "api_key_configured": bool(api_key),
+        "api_key_length": len(api_key) if api_key else 0,
+        "api_key_preview": f"{api_key[:10]}..." if api_key and len(api_key) > 10 else "Not set"
+    })
