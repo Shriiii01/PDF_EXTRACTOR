@@ -10,8 +10,6 @@ A simple web application that extracts text from PDF files and provides AI-power
 - Fork: Go to https://github.com/Shriiii01/PDF_EXTRACTOR and click "Fork"
 - Download: Click "Code" → "Download ZIP" and extract it
 
-![Download Instructions](screenshots/download.png)
-
 ### Step 2: Open Terminal
 
 Navigate to the project folder:
@@ -91,6 +89,10 @@ Results will appear showing:
 - AI Analysis
 - Extracted Text
 - Input Details
+
+### Example Result
+
+![Final Result](screenshots/final-result.png)
 
 ## Stop Server
 
