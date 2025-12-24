@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Extractor & Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PDF Extractor & Analyzer</h1>
+            <p>Upload a PDF file and get AI-powered analysis</p>
+        </header>
+
+        <main>
+            <form id="pdfForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="pdfFile">PDF File</label>
+                    <input type="file" id="pdfFile" name="file" accept=".pdf" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="procedure">Procedure</label>
+                    <input type="text" id="procedure" name="procedure" placeholder="Enter procedure name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="insurancePayer">Insurance Payer</label>
+                    <input type="text" id="insurancePayer" name="insurance_payer" placeholder="Enter insurance payer" required>
+                </div>
+
+                <button type="submit" id="submitBtn">Process PDF</button>
+            </form>
+
+            <div id="loading" class="loading hidden">
+                <p>Processing PDF and analyzing with AI...</p>
+            </div>
+
+            <div id="error" class="error hidden"></div>
+
+            <div id="results" class="results hidden">
+                <section class="result-section">
+                    <h2>AI Analysis</h2>
+                    <div id="aiResponse" class="ai-response"></div>
+                </section>
+
+                <section class="result-section">
+                    <h2>Extracted Text</h2>
+                    <div id="extractedText" class="extracted-text"></div>
+                </section>
+
+                <section class="result-section">
+                    <h2>Input Details</h2>
+                    <div class="input-details">
+                        <p><strong>Procedure:</strong> <span id="procedureDisplay"></span></p>
+                        <p><strong>Insurance Payer:</strong> <span id="insurancePayerDisplay"></span></p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
