@@ -128,3 +128,4 @@ Press `Ctrl+C` in the terminal.
 - PDFs processed in memory (not saved)
 - OpenAI API usage incurs costs
 - Runs locally on your computer
+- Email:shrijambhale8@gmail.com
